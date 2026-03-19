@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -582,6 +583,11 @@ public class WebviewActivity extends AppCompatActivity implements NavigationView
         getWindow().setStatusBarColor(Color.BLACK);
 
         Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(Color.BLACK));
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setBackgroundColor(Color.BLACK);
+        ColorStateList itemTextCsl = ContextCompat.getColorStateList(this, R.color.nav_item_color_dark);
+        navigationView.setItemTextColor(itemTextCsl);
 
         if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
             WebSettingsCompat.setForceDark(mWebView.getSettings(), WebSettingsCompat.FORCE_DARK_ON);
