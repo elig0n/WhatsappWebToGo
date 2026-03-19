@@ -463,6 +463,11 @@ public class WebviewActivity extends AppCompatActivity implements NavigationView
         AlertDialog alert = builder.create();
         alert.show();
         ((TextView) alert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
+
+        if (mSharedPrefs.getBoolean("darkMode", false)) {
+            alert.getWindow().setBackgroundDrawable(new ColorDrawable((Color.BLACK)));
+            ((TextView) alert.findViewById(android.R.id.message)).setTextColor(Color.WHITE);
+        }
     }
 
     private void showPopupDialog(int resId) {
